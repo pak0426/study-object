@@ -27,7 +27,7 @@ public class Screening {
         return this.sequence == sequence;
     }
 
-    public MonetaryAmountFormatter getMovieFee() {
+    public Money getMovieFee() {
         return movie.getFee();
     }
 

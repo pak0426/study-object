@@ -8,7 +8,7 @@ public class Money {
     private final BigDecimal amount;
 
     public static Money wons(BigDecimal amount) {
-        return new Money(BigDecimal.valueOf(amount));
+        return new Money(amount);
     }
 
     public static Money wons(double amount) {

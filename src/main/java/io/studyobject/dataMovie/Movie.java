@@ -1,6 +1,7 @@
 package io.studyobject.dataMovie;
 
 import io.studyobject.dataMovie.enums.MovieType;
+import io.studyobject.movie.Money;
 
 import java.time.Duration;
 import java.util.Collections;

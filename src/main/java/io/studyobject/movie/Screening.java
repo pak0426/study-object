@@ -1,5 +1,6 @@
 package io.studyobject.movie;
 
+import io.studyobject.dataMovie.Customer;
 import org.springframework.format.number.money.MonetaryAmountFormatter;
 
 import java.time.LocalDateTime;

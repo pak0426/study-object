@@ -1,5 +1,7 @@
 package io.studyobject.movie;
 
+import io.studyobject.dataMovie.Customer;
+
 public class Reservation {
     private Customer customer;
     private Screening screening;

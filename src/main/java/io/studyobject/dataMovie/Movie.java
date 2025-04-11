@@ -29,6 +29,30 @@ public class Movie {
         return movieType;
     }
 
+    public Money calculateAmountDiscountedFee() {
+        if (movieType != MovieType.AMOUNT_DISCOUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        return fee.minus(discountAmount);
+    }
+
+    public Money calculatePercentDiscountedFee() {
+        if (movieType != MovieType.PERCENT_DISCOUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        return fee.minus(fee.times(discountPercent));
+    }
+
+    public Money calculateNoneDiscountFee() {
+        if (movieType != MovieType.NONE_DISCOUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        return fee;
+    }
+
     public void setMovieType(MovieType movieType) {
         this.movieType = movieType;
     }

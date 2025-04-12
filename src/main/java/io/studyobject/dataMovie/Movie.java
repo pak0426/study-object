@@ -1,9 +1,11 @@
 package io.studyobject.dataMovie;
 
+import io.studyobject.dataMovie.enums.DiscountConditionType;
 import io.studyobject.dataMovie.enums.MovieType;
 import io.studyobject.movie.Money;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -79,5 +81,21 @@ public class Movie {
 
     public void setDiscountPercent(double discountPercent) {
         this.discountPercent = discountPercent;
+    }
+
+    public boolean isDiscountable(LocalDateTime whenScreend, int sequence) {
+        for (DiscountCondition condition : discountConditions) {
+            if (condition.getType() == DiscountConditionType.PERIOD) {
+                if (condition.isDiscountable(whenScreend.getDayOfWeek(), whenScreend.toLocalTime())) {
+                    return true;
+                }
+            } else {
+                if (condition.isDiscountable(sequence)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

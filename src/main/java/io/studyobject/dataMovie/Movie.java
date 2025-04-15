@@ -19,18 +19,6 @@ public class Movie {
     private Money discountAmount;
     private double discountPercent;
 
-    public Money getFee() {
-        return fee;
-    }
-
-    public void setFee(Money fee) {
-        this.fee = fee;
-    }
-
-    public MovieType getMovieType() {
-        return movieType;
-    }
-
     public Money calculateAmountDiscountedFee() {
         if (movieType != MovieType.AMOUNT_DISCOUNT) {
             throw new IllegalArgumentException();
@@ -53,6 +41,18 @@ public class Movie {
         }
 
         return fee;
+    }
+
+    public Money getFee() {
+        return fee;
+    }
+
+    public void setFee(Money fee) {
+        this.fee = fee;
+    }
+
+    public MovieType getMovieType() {
+        return movieType;
     }
 
     public void setMovieType(MovieType movieType) {

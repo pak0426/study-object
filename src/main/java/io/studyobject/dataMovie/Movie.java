@@ -3,7 +3,6 @@ package io.studyobject.dataMovie;
 import io.studyobject.dataMovie.enums.DiscountConditionType;
 import io.studyobject.dataMovie.enums.MovieType;
 import io.studyobject.movie.Money;
-import io.studyobject.movie.Screening;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,22 +1,31 @@
 package io.studyobject.movie;
 
-import io.studyobject.dataMovie.PeriodCondition;
-import io.studyobject.dataMovie.Screening;
-import io.studyobject.dataMovie.SequenceCondition;
+import io.studyobject.movie.policy.DiscountPolicy;
 
-import java.util.List;
+import java.time.Duration;
 
 public class Movie {
-    private List<PeriodCondition> periodConditions;
-    private List<SequenceCondition> sequenceConditions;
+    private String title;
+    private Duration duration;
+    private Money fee;
+    private DiscountPolicy discountPolicy;
 
-    private boolean checkPeriodConditions(Screening screening) {
-        return periodConditions.stream()
-                .anyMatch(condition -> condition.isSatisfiedBy(screening));
+    public Movie(String title, Duration duration, Money fee, DiscountPolicy discountPolicy) {
+        this.title = title;
+        this.duration = duration;
+        this.fee = fee;
+        this.discountPolicy = discountPolicy;
     }
 
-    private boolean checkSequenceConditions(Screening screening) {
-        return sequenceConditions.stream()
-                .anyMatch(condition -> condition.isSatisfiedBy(screening));
+    public Money getFee() {
+        return fee;
+    }
+
+    public Money calculateMovieFee(Screening screening) {
+        return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+    }
+
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
     }
 }

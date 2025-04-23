@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
 @Setter
-public class Movie {
+public abstract class Movie {
     private String title;
     private Duration runningTime;
     private Money fee;
@@ -19,6 +20,13 @@ public class Movie {
     private MovieType movieType;
     private Money discountAmount;
     private double discountPercent;
+
+    public Movie(String title, Duration runningTime, Money fee, DiscountCondition... discountConditions) {
+        this.title = title;
+        this.runningTime = runningTime;
+        this.fee = fee;
+        this.discountConditions = Arrays.asList(discountConditions);
+    }
 
     public Money calculateMovieFee(Screening screening) {
         if (isDiscountable(screening)) {
@@ -33,55 +41,9 @@ public class Movie {
                 .anyMatch(condition -> condition.isSatisfiedBy(screening));
     }
 
-    private Money calculateDiscountAmount() {
-        switch (movieType) {
-            case AMOUNT_DISCOUNT -> {
-                return calculateAmountDiscountAmount();
-            }
-            case PERCENT_DISCOUNT -> {
-                return calculatePercentDiscountAmount();
-            }
-            case NONE_DISCOUNT -> {
-                return calculateNoneDiscountAmount();
-            }
-        }
+    abstract protected Money calculateDiscountAmount();
 
-        throw new IllegalStateException();
-    }
-
-    public Money calculateAmountDiscountedFee() {
-        if (movieType != MovieType.AMOUNT_DISCOUNT) {
-            throw new IllegalArgumentException();
-        }
-
-        return fee.minus(discountAmount);
-    }
-
-    public Money calculatePercentDiscountedFee() {
-        if (movieType != MovieType.PERCENT_DISCOUNT) {
-            throw new IllegalArgumentException();
-        }
-
-        return fee.minus(fee.times(discountPercent));
-    }
-
-    public Money calculateNoneDiscountFee() {
-        if (movieType != MovieType.NONE_DISCOUNT) {
-            throw new IllegalArgumentException();
-        }
-
+    protected Money getFee() {
         return fee;
-    }
-
-    private Money calculateAmountDiscountAmount() {
-        return discountAmount;
-    }
-
-    private Money calculatePercentDiscountAmount() {
-        return fee.times(discountPercent);
-    }
-
-    private Money calculateNoneDiscountAmount() {
-        return Money.ZERO;
     }
 }

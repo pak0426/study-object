@@ -20,4 +20,8 @@ public class PeriodCondition implements DiscountCondition {
                 startTime.compareTo(screening.getWhenScreened().toLocalTime()) <= 0 &&
                 endTime.compareTo(screening.getWhenScreened().toLocalTime()) >= 0;
     }
+
+    public boolean isSatisfiedByBad(Screening screening) {
+        return screening.isDiscountableBad(dayOfWeek, startTime, endTime);
+    }
 }

@@ -1,8 +1,11 @@
 package io.studyobject.dataMovie;
 
 import io.studyobject.movie.Money;
+import org.springframework.cglib.core.Local;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Screening {
     private Movie movie;
@@ -45,5 +48,11 @@ public class Screening {
 
     public void setWhenScreened(LocalDateTime whenScreened) {
         this.whenScreened = whenScreened;
+    }
+
+    public boolean isDiscountableBad(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
+        return whenScreened.getDayOfWeek().equals(dayOfWeek) &&
+                startTime.compareTo(whenScreened.toLocalTime()) <= 0 &&
+                endTime.compareTo(whenScreened.toLocalTime()) >= 0;
     }
 }

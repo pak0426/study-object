@@ -8,9 +8,15 @@ public class TaxCalculator {
     private static final int[] basePays = {400, 300, 250};
 
     public static void main(String[] args) {
+        String name = typingName();
         double taxRate = getTaxRate();
         double pay = calculatePayFor(name, taxRate);
         System.out.println((describeResult(name, pay)));
+    }
+
+    private static String typingName() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     private static double getTaxRate() {

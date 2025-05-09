@@ -13,12 +13,12 @@ public class Theater {
 
     public void legacyEnter(Audience audience) {
         if (audience.getBag().hasInvitation()) {
-            ticketSeller.getTicketOffice().getTicket();
+            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
             audience.getBag().setTicket(ticket);
         } else {
-            ticketSeller.getTicketOffice().getTicket();
+            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
             audience.getBag().minusAmount(ticket.getFee());
-            ticketSeller.getTicketOffice().plusAmount(ticketSeller.getFee());
+            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
             audience.getBag().setTicket(ticket);
         }
     }

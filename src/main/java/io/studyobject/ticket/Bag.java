@@ -10,15 +10,15 @@ public class Bag {
         this.amount = amount;
     }
 
-    private boolean hasInvitation() {
+    public boolean hasInvitation() {
         return invitation != null;
     }
 
-    private void setTicket(Ticket ticket) {
+    public void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
 
-    private void minusAmount(Long amount) {
+    public void minusAmount(Long amount) {
         this.amount -= amount;
     }
 

@@ -1,5 +1,8 @@
 package io.studyobject.ticket;
 
+import lombok.Getter;
+
+@Getter
 public class Audience {
     private Bag bag;
     private Audience(Bag bag) {

@@ -1,9 +1,11 @@
 package io.studyobject.movie;
 
 import io.studyobject.movie.policy.DiscountPolicy;
+import lombok.Getter;
 
 import java.time.Duration;
 
+@Getter
 public class Movie {
     private String title;
     private Duration duration;
@@ -17,11 +19,11 @@ public class Movie {
         this.discountPolicy = discountPolicy;
     }
 
-    public Money getFee() {
-        return fee;
+    public Money calculateMovieFee(Screening screening) {
+        return fee.minus(discountPolicy.calculateDiscountAmount(screening));
     }
 
-    public Money calculateMovieFee(Screening screening) {
+    public Money calculateMovieFee(Screening screening, DiscountPolicy discountPolicy) {
         return fee.minus(discountPolicy.calculateDiscountAmount(screening));
     }
 

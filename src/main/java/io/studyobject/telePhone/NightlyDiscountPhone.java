@@ -8,37 +8,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class NightlyDiscountPhone {
+public class NightlyDiscountPhone extends Phone {
     private static final int LATE_NIGHT_HOUR = 22;
 
     private Money nightlyAmount;
-    private Money regularAmount;
-    private Duration seconds;
     private List<Call> calls = new ArrayList<>();
-    private double taxRate;
 
     public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds, double taxRate) {
+        super(regularAmount, seconds, taxRate);
         this.nightlyAmount = nightlyAmount;
-        this.regularAmount = regularAmount;
-        this.seconds = seconds;
-        this.taxRate = taxRate;
     }
 
     public void call(Call call) {
         calls.add(call);
     }
 
+    @Override
     public Money calculateFee() {
-        Money result = Money.ZERO;
+        Money result = super.calculateFee();
 
+        Money nightlyFee = Money.ZERO;
         for (Call call : calls) {
             if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
-                result = result.plus(nightlyAmount.times((double) call.getDuration().getSeconds() / seconds.getSeconds()));
-            } else {
-                result = result.plus(regularAmount.times((double) call.getDuration().getSeconds() / seconds.getSeconds()));
+                nightlyFee = nightlyFee.plus(
+                        getAmount().minus(nightlyAmount).times(
+                                (double) call.getDuration().getSeconds() / getSeconds().getSeconds()
+                        )
+                );
             }
         }
 
-        return result.minus(result.times(taxRate));
+        return result.minus(nightlyFee.plus(nightlyFee.times(getTaxRate())));
     }
 }

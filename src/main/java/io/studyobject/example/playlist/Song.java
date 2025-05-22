@@ -1,4 +1,4 @@
-package io.studyobject.example;
+package io.studyobject.example.playlist;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

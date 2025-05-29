@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class Phone {
+public class Phone extends AbstractPhone {
     private Money amount;
     private Duration seconds;
     private List<Call> calls = new ArrayList<>();

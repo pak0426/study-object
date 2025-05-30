@@ -26,17 +26,8 @@ public class NightlyDiscountPhone extends AbstractPhone {
         calls.add(call);
     }
 
-    public Money calculateFee() {
-        Money result = Money.ZERO;
-
-        for (Call call : calls) {
-            result = calculateCallFee(call);
-        }
-
-        return result;
-    }
-
-    private Money calculateCallFee(Call call) {
+    @Override
+    protected Money calculateCallFee(Call call) {
         if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
             return nightlyAmount.times((double) call.getDuration().getSeconds() / seconds.getSeconds());
         } else {

@@ -1,32 +1,27 @@
 package io.studyobject.example;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Set;
 
-public class InstrumentedHashSet<E> extends HashSet<E> {
+public class InstrumentedHashSet<E> {
     private int addCount = 0;
+    private Set<E> set;
 
-    @Override
+    public InstrumentedHashSet(Set<E> set) {
+        this.set = set;
+    }
+
     public boolean add(E e) {
         addCount++;
-        return super.add(e);
+        return set.add(e);
     }
 
-    @Override
     public boolean addAll(Collection<? extends E> c) {
-        boolean modified = false;
-        for (E e : c) {
-            if (add(e)) {
-                modified = true;
-            }
-        }
-        return modified;
+        addCount += c.size();
+        return set.addAll(c);
     }
 
-    public static void main(String[] args) {
-        InstrumentedHashSet<String> languages = new InstrumentedHashSet<>();
-        languages.addAll(Arrays.asList("Java", "Ruby", "Scala"));
-        System.out.println("languages.size() = " + languages.size());
+    public int getAddCount() {
+        return addCount;
     }
 }

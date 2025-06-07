@@ -14,17 +14,11 @@ public class NightlyDiscountPhone extends Phone {
     private Money nightlyAmount;
     private Money regularAmount;
     private Duration seconds;
-    private List<Call> calls = new ArrayList<>();
 
-    public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds, double taxRate) {
-        super(taxRate);
+    public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
         this.nightlyAmount = nightlyAmount;
         this.regularAmount = regularAmount;
         this.seconds = seconds;
-    }
-
-    public void call(Call call) {
-        calls.add(call);
     }
 
     @Override

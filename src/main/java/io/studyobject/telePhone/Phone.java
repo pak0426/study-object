@@ -10,10 +10,6 @@ public abstract class Phone {
     public double taxRate;
     public List<Call> calls = new ArrayList<>();
 
-    public Phone(double taxRate) {
-        this.taxRate = taxRate;
-    }
-
     public Money calculateFee() {
         Money result = Money.ZERO;
 

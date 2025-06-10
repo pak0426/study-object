@@ -19,6 +19,10 @@ public abstract class Phone {
         return afterCalculated(result);
     }
 
+    protected Money afterCalculated(Money fee) {
+        return fee;
+    }
+    ;
     abstract protected Money calculateCallFee(Call call);
-    abstract protected Money afterCalculated(Money fee);
 }
+

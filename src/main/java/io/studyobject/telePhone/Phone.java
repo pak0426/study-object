@@ -22,7 +22,7 @@ public abstract class Phone {
     protected Money afterCalculated(Money fee) {
         return fee;
     }
-    ;
-    abstract protected Money calculateCallFee(Call call);
+
+    protected abstract Money calculateCallFee(Call call);
 }
 

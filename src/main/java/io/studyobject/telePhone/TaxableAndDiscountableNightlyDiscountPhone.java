@@ -12,4 +12,9 @@ public class TaxableAndDiscountableNightlyDiscountPhone extends TaxableNightlyDi
         super(nightlyAmount, regularAmount, seconds, taxRate);
         this.discountAmount = discountAmount;
     }
+
+    @Override
+    protected Money afterCalculated(Money fee) {
+        return super.afterCalculated(fee).minus(discountAmount);
+    }
 }

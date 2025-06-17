@@ -1,4 +1,4 @@
-package io.studyobject.telePhone;
+package io.studyobject.telePhone.inheritation;
 
 import io.studyobject.movie.Money;
 

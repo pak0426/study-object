@@ -1,10 +1,12 @@
 package io.studyobject.telePhone;
 
 import io.studyobject.movie.Money;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public abstract class Phone {
 
     public List<Call> calls = new ArrayList<>();

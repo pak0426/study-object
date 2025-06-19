@@ -1,11 +1,11 @@
-package io.studyobject.telePhone;
+package io.studyobject.telePhone.inheritation;
 
 import io.studyobject.movie.Money;
+import io.studyobject.telePhone.Call;
+import io.studyobject.telePhone.Phone;
 import lombok.Getter;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 public class NightlyDiscountPhone extends Phone {

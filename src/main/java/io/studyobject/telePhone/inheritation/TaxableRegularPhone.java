@@ -1,7 +1,6 @@
 package io.studyobject.telePhone.inheritation;
 
 import io.studyobject.movie.Money;
-import io.studyobject.telePhone.RegularPhone;
 
 import java.time.Duration;
 

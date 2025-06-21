@@ -1,13 +1,13 @@
-package io.studyobject.telePhone.inheritation;
+package io.studyobject.telePhone.inheritance;
 
 import io.studyobject.movie.Money;
 
 import java.time.Duration;
 
-public class TaxableNightlyDiscountPhone extends NightlyDiscountPhone {
+public class TaxableNightlyDiscountInheritancePhone extends NightlyDiscountInheritancePhone {
     private double taxRate;
 
-    public TaxableNightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds, double taxRate) {
+    public TaxableNightlyDiscountInheritancePhone(Money nightlyAmount, Money regularAmount, Duration seconds, double taxRate) {
         super(nightlyAmount, regularAmount, seconds);
         this.taxRate = taxRate;
     }

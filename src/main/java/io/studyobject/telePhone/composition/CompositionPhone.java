@@ -1,13 +1,14 @@
-package io.studyobject.telePhone;
+package io.studyobject.telePhone.composition;
 
 import io.studyobject.movie.Money;
+import io.studyobject.telePhone.Call;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public abstract class Phone {
+public abstract class CompositionPhone {
 
     public List<Call> calls = new ArrayList<>();
 

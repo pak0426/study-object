@@ -1,21 +1,20 @@
-package io.studyobject.telePhone.inheritation;
+package io.studyobject.telePhone.inheritance;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
-import io.studyobject.telePhone.Phone;
 import lombok.Getter;
 
 import java.time.Duration;
 
 @Getter
-public class NightlyDiscountPhone extends Phone {
+public class NightlyDiscountInheritancePhone extends InheritancePhone {
     private static final int LATE_NIGHT_HOUR = 22;
 
     private Money nightlyAmount;
     private Money regularAmount;
     private Duration seconds;
 
-    public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
+    public NightlyDiscountInheritancePhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
         this.nightlyAmount = nightlyAmount;
         this.regularAmount = regularAmount;
         this.seconds = seconds;

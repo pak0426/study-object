@@ -2,14 +2,13 @@ package io.studyobject.telePhone.composition;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
-import io.studyobject.telePhone.Phone;
 
 public abstract class BasicRatePolicy implements RatePolicy {
     @Override
-    public Money calculateFee(Phone phone) {
+    public Money calculateFee(CompositionPhone compositionPhone) {
         Money result = Money.ZERO;
 
-        for (Call call : phone.getCalls()) {
+        for (Call call : compositionPhone.getCalls()) {
             result.plus(calculateCallFee(call));
         }
 

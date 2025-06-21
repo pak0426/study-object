@@ -1,18 +1,17 @@
-package io.studyobject.telePhone.inheritation;
+package io.studyobject.telePhone.inheritance;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
-import io.studyobject.telePhone.Phone;
 import lombok.Getter;
 
 import java.time.Duration;
 
 @Getter
-public class RegularPhone extends Phone {
+public class RegularInheritancePhone extends InheritancePhone {
     private Money amount;
     private Duration seconds;
 
-    public RegularPhone(Money amount, Duration seconds) {
+    public RegularInheritancePhone(Money amount, Duration seconds) {
         this.amount = amount;
         this.seconds = seconds;
     }

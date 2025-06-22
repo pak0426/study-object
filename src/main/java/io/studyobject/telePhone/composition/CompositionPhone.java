@@ -5,27 +5,25 @@ import io.studyobject.telePhone.Call;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
-public abstract class CompositionPhone {
+public class CompositionPhone {
 
+    private RatePolicy ratePolicy;
     public List<Call> calls = new ArrayList<>();
 
+    public CompositionPhone(RatePolicy ratePolicy) {
+        this.ratePolicy = ratePolicy;
+    }
+
+    public List<Call> getCalls() {
+        return Collections.unmodifiableList(calls);
+    }
+
     public Money calculateFee() {
-        Money result = Money.ZERO;
-
-        for (Call call : calls) {
-            result = result.plus(calculateCallFee(call));
-        }
-
-        return afterCalculated(result);
+        return ratePolicy.calculateFee(this);
     }
-
-    protected Money afterCalculated(Money fee) {
-        return fee;
-    }
-
-    protected abstract Money calculateCallFee(Call call);
 }
 

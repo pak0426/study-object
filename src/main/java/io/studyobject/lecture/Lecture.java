@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lecture {
+    private String name;
     private int pass;
-    private String title;
     private List<Integer> scores = new ArrayList<>();
 
-    public Lecture(int pass, String title, List<Integer> scores) {
+    public Lecture(String name, int pass, List<Integer> scores) {
         this.pass = pass;
-        this.title = title;
+        this.name = name;
         this.scores = scores;
     }
 

@@ -17,7 +17,7 @@ public class Grade {
         return this.name.equals(name);
     }
 
-    public boolean isInclude(int score) {
+    public boolean include(int score) {
         return score >= lower && score <= upper;
     }
 }

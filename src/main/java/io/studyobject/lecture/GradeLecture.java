@@ -1,13 +1,33 @@
 package io.studyobject.lecture;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GradeLecture extends Lecture {
     private List<Grade> grades;
 
+    public GradeLecture(int pass, String title, List<Integer> scores) {
+        super(pass, title, scores);
+    }
 
-    public GradeLecture(int pass, String name, List<Grade> grades, List<Integer> scores) {
-        super(pass, name, scores);
-        this.grades = grades;
+    @Override
+    public String evaluate() {
+        return super.evaluate() + ", " + gradeStatistics();
+    }
+
+    private String gradeStatistics() {
+        return grades.stream()
+                .map(this::format)
+                .collect(Collectors.joining(" "));
+    }
+
+    private String format(Grade grade) {
+        return String.format("%s:%d", grade.getName(), gradeCount(grade));
+    }
+
+    private long gradeCount(Grade grade) {
+        return getScores().stream()
+                .filter(grade::include)
+                .count();
     }
 }

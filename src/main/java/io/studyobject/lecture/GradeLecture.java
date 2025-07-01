@@ -6,8 +6,9 @@ import java.util.stream.Collectors;
 public class GradeLecture extends Lecture {
     private List<Grade> grades;
 
-    public GradeLecture(int pass, String title, List<Integer> scores) {
+    public GradeLecture(int pass, String title, List<Integer> scores, List<Grade> grades) {
         super(pass, title, scores);
+        this.grades = grades;
     }
 
     @Override

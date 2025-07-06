@@ -3,8 +3,10 @@ package io.studyobject.example.is_a;
 public class Penguin extends Bird {
     @Override
     public void fly() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void flyBird(Bird bird) {}
+    public void flyBird(Bird bird) {
+    }
 }

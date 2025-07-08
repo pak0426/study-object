@@ -1,7 +1,8 @@
 package io.studyobject.example.is_a;
 
-public class Penguin extends Bird {
+public class FlyingBird extends Bird {
     @Override
     public void fly() {
+        super.fly();
     }
 }

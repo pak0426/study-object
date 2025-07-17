@@ -2,14 +2,13 @@ package io.studyobject.telePhone.composition;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
-import org.springframework.cglib.core.Local;
 
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimerOfDayDiscountPolicy extends BasicRatePolicy {
+public class TimeOfDayDiscountPolicy extends BasicRatePolicy {
     private List<LocalTime> starts = new ArrayList<>();
     private List<LocalTime> ends = new ArrayList<>();
     private List<Duration> durations = new ArrayList<>();

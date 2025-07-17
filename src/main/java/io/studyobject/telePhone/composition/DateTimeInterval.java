@@ -57,14 +57,17 @@ public class DateTimeInterval {
         return Arrays.asList(this);
     }
 
-    public List<DateTimeInterval> splitByDay(long days) {
-        List<DateTimeInterval> result = new ArrayList<>();
-        return result;
-    }
-
     private long days() {
         return Duration.between(from.toLocalDate().atStartOfDay(), to.toLocalDate().atStartOfDay())
                 .toDays();
+    }
+
+    public List<DateTimeInterval> splitByDay(long days) {
+        List<DateTimeInterval> result = new ArrayList<>();
+        addFirstDay(result);
+        addMiddleDays(result, days);
+        addLastDay(result);
+        return result;
     }
 
     private void addFirstDay(List<DateTimeInterval> result) {

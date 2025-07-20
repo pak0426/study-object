@@ -25,5 +25,9 @@ public class CompositionPhone {
     public Money calculateFee() {
         return ratePolicy.calculateFee(this);
     }
+
+    public void calls(Call call) {
+        calls.add(call);
+    }
 }
 

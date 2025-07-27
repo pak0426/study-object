@@ -1,6 +1,7 @@
-package io.studyobject.telePhone.composition;
+package io.studyobject.telePhone.composition.fee;
 
 import io.studyobject.movie.Money;
+import io.studyobject.telePhone.composition.DateTimeInterval;
 
 import java.time.Duration;
 

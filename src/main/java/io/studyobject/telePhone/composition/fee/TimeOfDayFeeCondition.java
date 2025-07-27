@@ -1,6 +1,7 @@
-package io.studyobject.telePhone.composition;
+package io.studyobject.telePhone.composition.fee;
 
 import io.studyobject.telePhone.Call;
+import io.studyobject.telePhone.composition.DateTimeInterval;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -35,7 +36,7 @@ public class TimeOfDayFeeCondition implements FeeCondition {
     }
 
     private LocalTime to(DateTimeInterval interval) {
-        return interval.getTo().toLocalTime().isBefore(from) ?
-                from : interval.getTo().toLocalTime();
+        return interval.getTo().toLocalTime().isBefore(to) ?
+                to : interval.getTo().toLocalTime();
     }
 }

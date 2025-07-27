@@ -1,6 +1,7 @@
-package io.studyobject.telePhone.composition;
+package io.studyobject.telePhone.composition.fee;
 
 import io.studyobject.telePhone.Call;
+import io.studyobject.telePhone.composition.DateTimeInterval;
 
 import java.util.List;
 

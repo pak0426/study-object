@@ -2,6 +2,7 @@ package io.studyobject.telePhone.composition;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
+import io.studyobject.telePhone.composition.appendix.Bill;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -28,6 +29,10 @@ public class CompositionPhone {
 
     public void calls(Call call) {
         calls.add(call);
+    }
+
+    public Bill publishBill() {
+        return new Bill(this, ratePolicy.calculateFee(calls));
     }
 }
 

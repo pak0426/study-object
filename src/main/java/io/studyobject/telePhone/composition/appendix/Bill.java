@@ -1,4 +1,4 @@
-package io.studyobject.telePhone.composition.a;
+package io.studyobject.telePhone.composition.appendix;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.composition.CompositionPhone;

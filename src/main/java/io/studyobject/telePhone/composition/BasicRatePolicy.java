@@ -22,6 +22,19 @@ public abstract class BasicRatePolicy implements RatePolicy {
                 .reduce(Money.ZERO, Money::plus);
     }
 
+    @Override
+    public Money calculateFee(List<Call> calls) {
+        assert calls != null;
+
+        Money result = Money.ZERO;
+
+        for (Call call : calls) {
+            result.plus(calculateCallFee(call));
+        }
+
+        return result;
+    }
+
     private Money calculate(Call call) {
         return feeRules.stream()
                 .map(rule -> rule.calculateFee(call))

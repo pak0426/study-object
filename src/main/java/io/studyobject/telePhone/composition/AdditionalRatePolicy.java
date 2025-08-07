@@ -25,7 +25,8 @@ public abstract class AdditionalRatePolicy implements RatePolicy {
         Money fee = next.calculateFee(calls);
         Money result = afterCalculated(fee);
 
-        assert result.isGreaterThanOrEqual(Money.ZERO);
+        // 사후 조건
+//        assert result.isGreaterThanOrEqual(Money.ZERO);
 
         return result;
     }

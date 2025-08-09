@@ -10,6 +10,8 @@ public abstract class AdditionalRatePolicy implements RatePolicy {
 
     public AdditionalRatePolicy(RatePolicy next) {
         this.next = next;
+        // 불변식
+        assert next != null;
     }
 
     @Override
@@ -20,6 +22,9 @@ public abstract class AdditionalRatePolicy implements RatePolicy {
 
     @Override
     public Money calculateFee(List<Call> calls) {
+        // 불변식
+        assert next != null;
+        // 사전조건
         assert calls != null;
 
         Money fee = next.calculateFee(calls);
@@ -27,6 +32,8 @@ public abstract class AdditionalRatePolicy implements RatePolicy {
 
         // 사후 조건
         assert result.isGreaterThanOrEqual(Money.ZERO);
+        // 불변식
+        assert next != null;
 
         return result;
     }

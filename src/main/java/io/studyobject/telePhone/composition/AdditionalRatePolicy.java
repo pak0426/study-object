@@ -6,7 +6,7 @@ import io.studyobject.telePhone.Call;
 import java.util.List;
 
 public abstract class AdditionalRatePolicy implements RatePolicy {
-    private RatePolicy next;
+    protected RatePolicy next;
 
     public AdditionalRatePolicy(RatePolicy next) {
         this.next = next;

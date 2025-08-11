@@ -6,12 +6,10 @@ import io.studyobject.telePhone.Call;
 import java.util.List;
 
 public abstract class AdditionalRatePolicy implements RatePolicy {
-    protected RatePolicy next;
+    private RatePolicy next;
 
     public AdditionalRatePolicy(RatePolicy next) {
-        this.next = next;
-        // 불변식
-        assert next != null;
+        changeNext(next);
     }
 
     @Override
@@ -39,4 +37,11 @@ public abstract class AdditionalRatePolicy implements RatePolicy {
     }
 
     abstract protected Money afterCalculated(Money fee);
+
+    protected void changeNext(RatePolicy next) {
+        this.next = next;
+
+        // 불변식
+        assert next != null;
+    }
 }

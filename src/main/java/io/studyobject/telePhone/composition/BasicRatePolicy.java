@@ -2,6 +2,7 @@ package io.studyobject.telePhone.composition;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
+import io.studyobject.telePhone.composition.appendix.EmptyCallException;
 import io.studyobject.telePhone.composition.fee.FeeRule;
 
 import java.util.Arrays;
@@ -24,9 +25,8 @@ public abstract class BasicRatePolicy implements RatePolicy {
 
     @Override
     public Money calculateFee(List<Call> calls) {
-        // 사전 조건
-        if (calls == null) {
-            return Money.ZERO;
+        if (calls == null || calls.isEmpty()) {
+            throw new EmptyCallException();
         }
 
         Money result = Money.ZERO;

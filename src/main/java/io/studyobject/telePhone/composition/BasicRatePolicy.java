@@ -44,5 +44,13 @@ public abstract class BasicRatePolicy implements RatePolicy {
                 .reduce(Money.ZERO, Money::plus);
     }
 
+    public Money calculate(RatePolicy policy,  List<Call> calls) {
+        try {
+            return policy.calculateFee(calls);
+        } catch (EmptyCallException e) {
+            return Money.ZERO;
+        }
+    }
+
     protected abstract Money calculateCallFee(Call call);
 }

@@ -2,6 +2,7 @@ package io.studyobject.telePhone.composition;
 
 import io.studyobject.movie.Money;
 import io.studyobject.telePhone.Call;
+import io.studyobject.telePhone.composition.appendix.NoneElementException;
 
 import java.util.List;
 
@@ -20,10 +21,9 @@ public abstract class AdditionalRatePolicy implements RatePolicy {
 
     @Override
     public Money calculateFee(List<Call> calls) {
-        // 불변식
-        assert next != null;
-        // 사전조건
-        assert calls != null;
+        if (calls == null || calls.isEmpty()) {
+            throw new NoneElementException();
+        }
 
         Money fee = next.calculateFee(calls);
         Money result = afterCalculated(fee);

@@ -1,5 +1,5 @@
 package io.studyobject.telePhone.composition.appendix;
 
-public class NoneElementException extends RuntimeException {
+public class NoneElementException extends EmptyCallException {
 
 }
